@@ -11,6 +11,7 @@ import com.concesionario.ordenes_trabajo.repositories.IWorkOrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,6 +24,22 @@ public class WorkOrderService implements IWorkOrderService {
 
     @Override
     public WorkOrder createWorkOrder(WorkOrderDTO dto) {
+        if (dto.getType() == null || dto.getType().isBlank()) {
+            throw new BusinessRuleException("Order type is required.");
+        }
+        if (dto.getDescription() == null || dto.getDescription().isBlank()) {
+            throw new BusinessRuleException("Order description is required.");
+        }
+        if (dto.getDate() == null || dto.getDate().isAfter(LocalDate.now())) {
+            throw new BusinessRuleException("Invalid order date.");
+        }
+        if (dto.getCost() == null || dto.getCost() < 0) {
+            throw new BusinessRuleException("Order cost must be greater than or equal to 0.");
+        }
+        if (dto.getVehicleId() == null) {
+            throw new BusinessRuleException("Vehicle ID is required.");
+        }
+
         Vehicle vehicle = vehicleRepository.findById(dto.getVehicleId())
                 .orElseThrow(() -> new ResourceNotFoundException("Vehicle with id " + dto.getVehicleId() + " not found."));
 
@@ -49,6 +66,7 @@ public class WorkOrderService implements IWorkOrderService {
         if (!vehicleRepository.existsById(vehicleId)) {
             throw new ResourceNotFoundException("Vehicle with id " + vehicleId + " not found.");
         }
+
         return workOrderRepository.findByVehicleId(vehicleId);
     }
 }

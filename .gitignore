@@ -65,3 +65,9 @@ Thumbs.db
 /backend/coverage/
 /frontend/coverage/
 /**/test-results/
+
+# Ignore Spring Boot config files
+/Backend/src/main/resources/application.properties
+/Backend/src/main/resources/application-local.properties
+/Backend/src/main/resources/application-dev.properties
+
