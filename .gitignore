@@ -1,0 +1,67 @@
+# -------------------------------
+# BACKEND - Java / Spring Boot (Gradle)
+# -------------------------------
+
+## Gradle
+/backend/build/
+/backend/.gradle/
+/backend/gradle-app.setting
+/backend/gradlew
+/backend/gradlew.bat
+
+## IntelliJ
+/backend/.idea/
+/backend/*.iml
+
+## Eclipse
+/backend/.classpath
+/backend/.project
+/backend/.settings/
+
+## Logs y otros
+/backend/*.log
+/backend/.DS_Store
+
+# -------------------------------
+# FRONTEND - Angular (npm)
+# -------------------------------
+
+## Node dependencies
+/frontend/node_modules/
+frontend/package-lock.json
+frontend/npm-debug.log*
+
+## Angular build output
+/frontend/dist/
+/frontend/.angular/
+
+## IDEs
+/frontend/.idea/
+/frontend/.vscode/
+frontend/*.iml
+
+## Otros
+/frontend/.DS_Store
+/frontend/.env
+
+# -------------------------------
+# General del sistema
+# -------------------------------
+
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+*.tmp
+*.bak
+
+# Docker (variables)
+**/.env
+**/docker.env
+
+# -------------------------------
+# Coverage & test results
+# -------------------------------
+/backend/coverage/
+/frontend/coverage/
+/**/test-results/
