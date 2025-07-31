@@ -1,5 +1,6 @@
 package com.concesionario.ordenes_trabajo.repositories;
 
+import com.concesionario.ordenes_trabajo.dtos.VehicleDTO;
 import com.concesionario.ordenes_trabajo.models.Vehicle;
 import org.springframework.data.jpa.repository.JpaRepository;
 

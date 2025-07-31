@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface IWorkOrderRepository extends JpaRepository<WorkOrder, Long> {
-    List<WorkOrder> findByVehicleId(Long vehicleId);
+    List<WorkOrder> findByVehicle_LicensePlate(String licensePlate);
     boolean existsByVehicleIdAndStatusIn(Long vehicleId, List<WorkOrderStatus> statuses);
 }

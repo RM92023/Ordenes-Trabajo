@@ -8,13 +8,14 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class WorkOrderDTO {
+@NoArgsConstructor
+public class WorkOrderResponseDTO {
+    private Long id;
     private String type;
     private String description;
     private LocalDate date;
     private Double cost;
-    private WorkOrderStatus status; // PENDING, IN_PROGRESS, COMPLETED, CANCELLED
+    private WorkOrderStatus status;
     private String licensePlate;
 }

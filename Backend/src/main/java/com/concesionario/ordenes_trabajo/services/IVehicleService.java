@@ -8,5 +8,6 @@ import java.util.List;
 public interface IVehicleService {
     Vehicle createVehicle(VehicleDTO dto);
     List<Vehicle> getAllVehicles();
-    Vehicle getVehicleById(Long id);
+    Vehicle getVehicleByLicensePlate(String licensePlate);
+    Vehicle update(Long id, VehicleDTO dto);
 }

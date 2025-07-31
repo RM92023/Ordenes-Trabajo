@@ -52,8 +52,32 @@ public class VehicleService implements IVehicleService {
     }
 
     @Override
-    public Vehicle getVehicleById(Long id) {
-        return vehicleRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Vehicle with id " + id + " not found."));
+    public Vehicle getVehicleByLicensePlate(String licensePlate) {
+        return vehicleRepository.findByLicensePlate(licensePlate)
+                .orElseThrow(() -> new ResourceNotFoundException("Vehicle with license plate " + licensePlate + " not found."));
+    }
+
+    @Override
+    public Vehicle update(Long id, VehicleDTO dto) {
+        Vehicle vehicle = vehicleRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Vehicle with ID " + id + " not found."));
+
+        if (dto.getLicensePlate() != null && !dto.getLicensePlate().isBlank()) {
+            if (vehicleRepository.existsByLicensePlate(dto.getLicensePlate())) {
+                throw new DuplicatedResourceException("Vehicle with license plate " + dto.getLicensePlate() + " already exists.");
+            }
+            vehicle.setLicensePlate(dto.getLicensePlate());
+        }
+        if (dto.getBrand() != null && !dto.getBrand().isBlank()) {
+            vehicle.setBrand(dto.getBrand());
+        }
+        if (dto.getModel() != null && !dto.getModel().isBlank()) {
+            vehicle.setModel(dto.getModel());
+        }
+        if (dto.getYear() != null && dto.getYear() >= 1900 && dto.getYear() <= LocalDate.now().getYear()) {
+            vehicle.setYear(dto.getYear());
+        }
+
+        return vehicleRepository.save(vehicle);
     }
 }
