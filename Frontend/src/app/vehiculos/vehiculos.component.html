@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Gestión de Vehículos</h2>
+
+  <form (ngSubmit)="crearVehiculo()" class="form">
+    <input [(ngModel)]="licensePlate" name="licensePlate" placeholder="Placa" required />
+    <input [(ngModel)]="brand" name="brand" placeholder="Marca" required />
+    <input [(ngModel)]="model" name="model" placeholder="Modelo" required />
+    <input [(ngModel)]="year" name="year" type="number" placeholder="Año" required />
+    <button type="submit">Registrar Vehículo</button>
+  </form>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <div *ngIf="success" class="success">{{ success }}</div>
+
+  <table *ngIf="vehiculos.length > 0">
+    <thead>
+      <tr>
+        <th>Placa</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Año</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let v of vehiculos">
+        <td>{{ v.licensePlate }}</td>
+        <td>{{ v.brand }}</td>
+        <td>{{ v.model }}</td>
+        <td>{{ v.year }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="vehiculos.length === 0 && !error">No hay vehículos registrados.</div>
+</div>

@@ -1,0 +1,14 @@
+<nav class="navbar">
+  <ul class="nav-links">
+    <li><a routerLink="/vehiculos" routerLinkActive="active">Vehículos</a></li>
+    <li><a routerLink="/ordenes" routerLinkActive="active">Órdenes</a></li>
+  </ul>
+
+  <button
+    *ngIf="mostrarBotonLogout"
+    class="logout-button"
+    (click)="cerrarSesion()"
+  >
+    Cerrar sesión
+  </button>
+</nav>
