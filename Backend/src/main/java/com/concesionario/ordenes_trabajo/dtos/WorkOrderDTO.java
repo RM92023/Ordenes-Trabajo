@@ -16,5 +16,5 @@ public class WorkOrderDTO {
     private LocalDate date;
     private Double cost;
     private WorkOrderStatus status; // PENDING, IN_PROGRESS, COMPLETED, CANCELLED
-    private Long vehicleId;
+    private String licensePlate;
 }

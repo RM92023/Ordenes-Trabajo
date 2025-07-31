@@ -1,6 +1,7 @@
 package com.concesionario.ordenes_trabajo.models;
 
 import com.concesionario.ordenes_trabajo.enums.WorkOrderStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,6 +36,7 @@ public class WorkOrder {
     @Column(nullable = false)
     private WorkOrderStatus status; //PENDING, IN_PROGRESS, COMPLETED, CANCELLED
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vehicle_id", nullable = false)
     private Vehicle vehicle;
