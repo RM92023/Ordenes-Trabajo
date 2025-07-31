@@ -22,23 +22,28 @@
 /backend/*.log
 /backend/.DS_Store
 
+
 # -------------------------------
 # FRONTEND - Angular (npm)
 # -------------------------------
 
 ## Node dependencies
 /frontend/node_modules/
-frontend/package-lock.json
-frontend/npm-debug.log*
+/frontend/npm-debug.log*
 
 ## Angular build output
-/frontend/dist/
+/Frontend/dist/
+/Frontend/.vscode/
 /frontend/.angular/
+/frontend/.angular/cache/
+/frontend/www/
+/frontend/.cache/
+/frontend/.eslintcache
 
 ## IDEs
 /frontend/.idea/
 /frontend/.vscode/
-frontend/*.iml
+/frontend/*.iml
 
 ## Otros
 /frontend/.DS_Store
@@ -66,9 +71,10 @@ Thumbs.db
 /frontend/coverage/
 /**/test-results/
 
-# Ignore Spring Boot config files
+# -------------------------------
+# Spring Boot config files (NO versionar locales)
+# -------------------------------
 /Backend/src/main/resources/application.properties
 /Backend/src/main/resources/application-local.properties
 /Backend/src/main/resources/application-dev.properties
 /Backend/src/main/resources/schema-dev.sql
-
