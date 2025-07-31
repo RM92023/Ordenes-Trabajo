@@ -25,8 +25,14 @@ public class VehicleController {
         return ResponseEntity.ok(vehicleService.getAllVehicles());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Vehicle> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(vehicleService.getVehicleById(id));
+    @GetMapping("/{licensePlate}")
+    public ResponseEntity<Vehicle> getByLicensePlate(@PathVariable String licensePlate) {
+        return ResponseEntity.ok(vehicleService.getVehicleByLicensePlate(licensePlate));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Vehicle> updateVehicle(@PathVariable Long id, @RequestBody VehicleDTO dto) {
+        Vehicle updated = vehicleService.update(id, dto);
+        return ResponseEntity.ok(updated);
     }
 }
