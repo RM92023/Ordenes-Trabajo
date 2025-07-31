@@ -1,59 +1,63 @@
-# Frontend
+# Frontend - Órdenes de Trabajo
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+Este es el frontend del sistema, desarrollado con **Angular** y servido mediante **Nginx**.
 
-## Development server
+## Tecnologías
 
-To start a local development server, run:
+- Angular
+- TypeScript
+- Nginx (para producción)
+- Docker
+
+## Ejecutar en desarrollo
 
 ```bash
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Acceder en:  
+[http://localhost:4200](http://localhost:4200)
 
-## Code scaffolding
+## Cambiar URL del Backend
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+En `src/app/services/services.api.ts`:
 
-```bash
-ng generate component component-name
+```ts
+export const environment = {
+  private readonly baseUrl = 'http://localhost:8080';
+  private readonly apiUrl = `${this.baseUrl}/api`;
+
+};
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Docker
+
+Ya configurado con Dockerfile.
 
 ```bash
-ng generate --help
+docker build -t ordenes-trabajo-frontend .
+docker run -p 4200:80 ordenes-trabajo-frontend
 ```
 
-## Building
+---
 
-To build the project run:
+## Output Angular
 
-```bash
-ng build
+El build se genera en:
+
+```
+dist/frontend/
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Y se copia automáticamente en `/usr/share/nginx/html` durante el build.
 
-## Running unit tests
+## Autor
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+<div style="display: flex; align-items: center; gap: 10px; margin-top: 1rem;">
+  <img src="https://avatars.githubusercontent.com/u/114312031?v=4" alt="Robinson Muñetón" width="60" height="60" style="border-radius: 50%;">
+  <div>
+    <strong>Robinson Muñetón Jaramillo</strong><br>
+    <a href="https://github.com/rm92023" target="_blank">github.com/rm92023</a>
+  </div>
+</div>
